@@ -1,11 +1,11 @@
 CODE SEGMENT
 ASSUME CS:CODE
 	START: MOV AX,1234H;AX存放1234H
-		 MOV BX,4321H;BX存放4321H
-		 ADD AX,BX;1234H与4321H相加，结果存放在AX
-		 MOV CX,AX;将AX的值复制到CX中，AX和CX值相同
-		 PUSH CX;将CX的值压入堆栈
-		 POP DX;将之前压入堆栈的CX值弹出到DX中
+	       MOV BX,4321H;BX存放4321H
+		   ADD AX,BX;1234H与4321H相加，结果存放在AX
+		   MOV CX,AX;将AX的值复制到CX中，AX和CX值相同
+		   PUSH CX;将CX的值压入堆栈
+		   POP DX;将之前压入堆栈的CX值弹出到DX中
 	ELOOP: JMP ELOOP;死循环，保证程序不中止
 CODE ENDS
 	END START
