@@ -1,0 +1,19 @@
+#!/usr/bin/python
+# Filename : DocString.py
+
+def printMax(x, y):
+    '''Prints the maximum of two numbers.
+
+The two values must be integers.'''
+    x = int(x)
+    y = int(y)
+
+    if x > y:
+        print(x, 'is maximum')
+    else:
+        print(y, 'is maximum')
+
+printMax(3, 5)
+print(printMax.__doc__)
+# Python的help()就是对DocStrings的应用
+help(printMax)
