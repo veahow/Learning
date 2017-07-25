@@ -1,5 +1,5 @@
 # Learning/Assembly
-此文件夹存放汇编语言代码，编程模型为Intel 8086 CPU。
+此文件夹存放汇编语言代码，编程模型为Intel 8086 CPU，汇编规范为MASM。
 Intel 8086 CPU拥有数据总线所能传输位数为16位，地址总线为20位，可寻址1MB内存空间。
 ## 8086CPU 基本组成
 * Bus Interface Unit 总线接口部件 BIU
@@ -20,7 +20,7 @@ Intel 8086 CPU拥有数据总线所能传输位数为16位，地址总线为20�
 	* 标志位寄存器 PSW or Flags
 	    * 6个状态标志位
             * Carry Flag 进位标志位 CF
-	        * Parity 奇偶校验标志位 PF
+	        * Parity Flag 奇偶校验标志位 PF
 	        * Auxiliary Carry Flag 辅助进位标志位 AF
 	        * Zero Flag 全零标志位 ZF
 	        * Sign Flag 符号标志位 SF

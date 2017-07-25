@@ -1,0 +1,45 @@
+# Filename : Operator.py
+# + 加
+print(3 + 5)
+print('a' + 'b')
+# - 减
+print(50 - 24)
+# * 乘
+print(2 * 3)
+print('la' * 3)
+# ** 幂
+print(3 ** 4)
+# / 除
+print(4 / 3)
+print(4.0 / 3)
+print(4 / 3.0)
+# // 取整除
+print(4 // 3.0)
+# % 取模
+print(8 % 3)
+# << 左移
+print(2 << 2)
+# >> 右移
+print(11 >> 1)
+# & 按位与
+print(5 & 3)
+# | 按位或
+print(5 | 3)
+# ^ 按位异或
+print(5 ^ 3)
+# ~ 按位翻转
+print(~5)
+# < 小于
+print(3 < 5 < 7)
+# > 大于
+print(5 > 3)
+# <= 小于等于
+print(3 <= 6)
+# >= 大于等于
+print(4 >= 3)
+# == 等于
+print('str' == 'Str')
+# != 不等于
+# not 布尔非
+# and 布尔与
+# or 布尔或
