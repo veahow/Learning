@@ -15,8 +15,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from Hello import views as Hello_views
+from Calc import views as Calc_views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'$', Hello_views.index)
+    # url(r'$', Hello_views.index),
+    # url(r'^add/$', Calc_views.add, name='add'),
+    # url(r'^add/(\d+)/(\d+)/$', Calc_views.add2, name='add2'),
+    url(r'^$', Hello_views.home, name='home'),
 ]

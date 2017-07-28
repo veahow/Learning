@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HelloWorld</title>
+</head>
+<body>
+    <h1>Programming every time, everywhere</h1>
+	<p>{% for i in TutorialList %}
+	       {{ i }}
+		   {% if not forloop.last %}
+		       ,
+		   {% endif %}
+	   {% endfor %}</p>
+</body>
+</html>
