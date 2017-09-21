@@ -15,6 +15,9 @@ public:
     explicit MyWidget(QWidget *parent = 0);
     ~MyWidget();
 
+public slots:
+    void on_showChildButton_clicked();
+
 private:
     Ui::MyWidget *ui;
 };

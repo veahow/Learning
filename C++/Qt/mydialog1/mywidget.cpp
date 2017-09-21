@@ -17,13 +17,22 @@ MyWidget::MyWidget(QWidget *parent) :
 //    QDialog dialog(this);
 //    dialog.exec();
 
-    QDialog *dialog = new QDialog(this);
-    dialog->setModal(true);
-    dialog->show();
+//    QDialog *dialog = new QDialog(this);
+//    dialog->setModal(true);
+//    dialog->show();
+
+//    connect(ui->showChildButton, &QPushButton::clicked,
+//            this, &MyWidget::showChildDialog);
 
 }
 
 MyWidget::~MyWidget()
 {
     delete ui;
+}
+
+void MyWidget::on_showChildButton_clicked()
+{
+    QDialog *dialog = new QDialog(this);
+    dialog->show();
 }
