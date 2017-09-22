@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MyWidget</class>
- <widget class="QWidget" name="MyWidget">
+ <class>MyDialog</class>
+ <widget class="QDialog" name="MyDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,52 +11,26 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MyWidget</string>
+   <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="showChildButton">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>120</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>显示子窗口</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>41</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>主窗口</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>160</y>
+     <y>140</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>重新登录</string>
+    <string>进入主窗口</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>160</y>
+     <x>210</x>
+     <y>140</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -66,22 +40,21 @@
    </property>
   </widget>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections>
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>MyWidget</receiver>
+   <receiver>MyDialog</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>255</x>
-     <y>168</y>
+     <x>222</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>288</x>
-     <y>150</y>
+     <x>300</x>
+     <y>125</y>
     </hint>
    </hints>
   </connection>

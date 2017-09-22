@@ -1,4 +1,5 @@
 #include "mywidget.h"
+#include "mydialog.h"
 #include "ui_mywidget.h"
 #include <QDialog>
 
@@ -35,4 +36,12 @@ void MyWidget::on_showChildButton_clicked()
 {
     QDialog *dialog = new QDialog(this);
     dialog->show();
+}
+
+void MyWidget::on_pushButton_clicked()
+{
+    close();
+    MyDialog dlg;
+
+    if(dlg.exec() == QDialog::Accepted) show();
 }
