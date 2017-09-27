@@ -5,13 +5,18 @@
 #include <QFontDialog>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QProgressDialog>
+#include <QErrorMessage>
 #include <QDebug>
+
+QErrorMessage *errordlg;
 
 MyWidget::MyWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MyWidget)
 {
     ui->setupUi(this);
+    errordlg = new QErrorMessage(this);
 }
 
 MyWidget::~MyWidget()
@@ -105,4 +110,60 @@ void MyWidget::on_pushButton_3_clicked()
 
     QMessageBox::about(this, tr("关于对话框"),
                        tr("Qt Creator"));
+}
+
+void MyWidget::on_pushButton_8_clicked()
+{
+    QProgressDialog dialog(tr("文件复制进度"), tr("取消"), 0, 50000, this);
+    dialog.setWindowTitle(tr("进度对话框"));
+    dialog.setWindowModality(Qt::WindowModal);
+    dialog.show();
+
+    for(int i = 0; i < 50000; ++i){
+        dialog.setValue(i);
+        QCoreApplication::processEvents();
+        if(dialog.wasCanceled()) break;
+    }
+
+    dialog.setValue(50000);
+    qDebug() << tr("复制结束！");
+}
+
+
+
+void MyWidget::on_pushButton_4_clicked()
+{
+    errordlg->setWindowTitle(tr("消息错误对话框"));
+    errordlg->showMessage(tr("这里是出错信息！"));
+}
+
+QWizardPage *MyWidget::createPage1()
+{
+    QWizardPage *page = new QWizardPage;
+    page->setTitle(tr("介绍"));
+    return page;
+}
+
+QWizardPage *MyWidget::createPage2()
+{
+    QWizardPage *page = new QWizardPage;
+    page->setTitle(tr("用户选择信息"));
+    return page;
+}
+
+QWizardPage *MyWidget::createPage3()
+{
+    QWizardPage *page = new QWizardPage;
+    page->setTitle(tr("结束"));
+    return page;
+}
+
+void MyWidget::on_pushButton_7_clicked()
+{
+    QWizard wizard(this);
+    wizard.setWindowTitle(tr("向导对话框"));
+    wizard.addPage(createPage1());
+    wizard.addPage(createPage2());
+    wizard.addPage(createPage3());
+    wizard.exec();
 }

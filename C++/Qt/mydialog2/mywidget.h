@@ -2,10 +2,13 @@
 #define MYWIDGET_H
 
 #include <QWidget>
+#include <QWizard>
 
 namespace Ui {
 class MyWidget;
 }
+
+class QErrorMessage;
 
 class MyWidget : public QWidget
 {
@@ -26,8 +29,17 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_7_clicked();
+
 private:
     Ui::MyWidget *ui;
+    QWizardPage *createPage1();
+    QWizardPage *createPage2();
+    QWizardPage *createPage3();
 };
 
 #endif // MYWIDGET_H
