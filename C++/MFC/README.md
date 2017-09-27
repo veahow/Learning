@@ -6,3 +6,4 @@ MFC(Microsoft Foundation Classes, 微软基础类库)
 操作系统：Microsoft Windows 7
 IDE：Visual Studio 2010
 
+创建MFC项目时需要保持Unicode字符集编码，使用静态MFC库，并且清单文件的输出需要改为否，才可编译运行。
