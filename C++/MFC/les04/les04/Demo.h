@@ -1,3 +1,4 @@
+/* les04 */
 #include "afxwin.h"
 
 class CDemoApp:public CWinApp

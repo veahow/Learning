@@ -1,3 +1,4 @@
+/* les03 */
 #include "Demo.h"
 
 BOOL CDemoApp::InitInstance()    // MFCÈë¿Úº¯Êý
