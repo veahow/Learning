@@ -15,6 +15,9 @@ public:
     explicit MyWidget(QWidget *parent = 0);
     ~MyWidget();
 
+private slots:
+    void on_listWidget_2_clicked(const QModelIndex &index);
+
 private:
     Ui::MyWidget *ui;
 };

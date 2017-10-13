@@ -11,22 +11,22 @@ MyWidget::MyWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFont font;
-    font.setFamily("华文行楷");
-    font.setPointSize(20);
-    font.setBold(true);
-    font.setItalic(true);
-    ui->label->setFont(font);
+//    QFont font;
+//    font.setFamily("华文行楷");
+//    font.setPointSize(20);
+//    font.setBold(true);
+//    font.setItalic(true);
+//    ui->label->setFont(font);
 
-    QString string = tr("标题太长，需要进行省略！");
-    QString str = ui->label->fontMetrics().elidedText(string, Qt::ElideRight, 180);
-    ui->label->setText(str);
+//    QString string = tr("标题太长，需要进行省略！");
+//    QString str = ui->label->fontMetrics().elidedText(string, Qt::ElideRight, 180);
+//    ui->label->setText(str);
 
-    ui->label->setPixmap(QPixmap("C:/Users/DMT/Desktop/logo.jpg"));
+//    ui->label->setPixmap(QPixmap("C:/Users/DMT/Desktop/logo.jpg"));
 
-    QMovie *movie = new QMovie("C:/Users/DMT/Desktop/logo.gif");
-    ui->label->setMovie(movie);
-    movie->start();
+//    QMovie *movie = new QMovie("C:/Users/DMT/Desktop/logo.gif");
+//    ui->label->setMovie(movie);
+//    movie->start();
 }
 
 MyWidget::~MyWidget()
