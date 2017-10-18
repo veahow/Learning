@@ -36,4 +36,5 @@ public:
 	CScrollBar m_Red;
 	CScrollBar m_Green;
 	CScrollBar m_Blue;
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 };

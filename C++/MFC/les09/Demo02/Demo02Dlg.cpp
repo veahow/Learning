@@ -71,6 +71,7 @@ BEGIN_MESSAGE_MAP(CDemo02Dlg, CDialog)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CDemo02Dlg::OnBnClickedButton1)
+	ON_WM_HSCROLL()
 END_MESSAGE_MAP()
 
 
@@ -165,13 +166,28 @@ void CDemo02Dlg::OnPaint()
 			switch(m_nBrushType)
 			{
 			case 0:    // 单色画刷
-				Brush.CreateSolidBrush(RGB(255, 0, 0));
+				// Brush.CreateSolidBrush(RGB(255, 0, 0));    // 固定值
+				// 关联滚动条位置数据并绘图
+				Brush.CreateSolidBrush(
+					RGB(m_Red.GetScrollPos(),
+					    m_Green.GetScrollPos(),
+					    m_Blue.GetScrollPos()));
 				break;
 			case 1:    // 垂直网格
-				Brush.CreateHatchBrush(HS_CROSS, RGB(255, 0, 0));
+				// Brush.CreateHatchBrush(HS_CROSS, RGB(255, 0, 0));    // 固定值
+				// 关联滚动条位置数据并绘图
+				Brush.CreateHatchBrush(HS_CROSS,
+					RGB(m_Red.GetScrollPos(),
+					    m_Green.GetScrollPos(),
+					    m_Blue.GetScrollPos()));
 				break;
 			case 2:    // 菱形网格
-				Brush.CreateHatchBrush(HS_DIAGCROSS, RGB(255, 0, 0));
+				// Brush.CreateHatchBrush(HS_DIAGCROSS, RGB(255, 0, 0));    // 固定值
+				// 关联滚动条位置数据并绘图
+				Brush.CreateHatchBrush(HS_DIAGCROSS,
+					RGB(m_Red.GetScrollPos(),
+					    m_Green.GetScrollPos(),
+					    m_Blue.GetScrollPos()));
 				break;
 			}
 		}
@@ -198,4 +214,43 @@ void CDemo02Dlg::OnBnClickedButton1()
 	// TODO: 在此添加控件通知处理程序代码
 
 	InvalidateRect(NULL);
+}
+
+
+void CDemo02Dlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	switch(nSBCode)
+	{
+	case SB_THUMBTRACK:    // 拖动滑块
+		// 拖动滑块的时候，没有处理新位置的话，滑块会跑回去，因此需要对新位置处理
+		pScrollBar->SetScrollPos(nPos);
+		break;
+	case SB_LINELEFT:
+		// 向左移动，微调的时候要自定义其步长大小。
+		pScrollBar->SetScrollPos(
+			pScrollBar->GetScrollPos()-1);    // 向左移动 -1
+		break;
+	case SB_LINERIGHT:
+		// 向右移动，微调的时候要自定义其步长大小。
+		pScrollBar->SetScrollPos(
+			pScrollBar->GetScrollPos()+1);    // 向右移动 +1
+		break;
+	case SB_PAGELEFT:
+		// 向左移动，粗调的时候要自定义其步长大小。
+		pScrollBar->SetScrollPos(
+			pScrollBar->GetScrollPos()-10);    // 向左移动 -10
+		break;
+	case SB_PAGERIGHT:
+		// 向右移动，粗调的时候要自定义其步长大小。
+		pScrollBar->SetScrollPos(
+			pScrollBar->GetScrollPos()+10);    // 向右移动 +10
+		break;		
+	}
+
+	// InvalidateRect() 里头的参数指定作废并刷新的区域，由于闪烁严重，应该只作废绘图的区域
+	// dc.Ellipse(10, 10, 310, 120);    即该区域(10, 10, 310, 120)作废
+	CRect rt(10, 10, 310, 120);    // 画图的区域
+	InvalidateRect(&rt);    // 发送WM_PAINT消息
+	CDialog::OnHScroll(nSBCode, nPos, pScrollBar);
 }
