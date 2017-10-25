@@ -25,6 +25,8 @@ IDE：Visual Studio 2010
 
 （或删除VS文件夹中bin文件夹里头的cvtres.exe，原因可能是VS2010编译器与.NET FrameWork最新版本不兼容）
 
+5.添加ActiveX控件：Microsoft Communications Control Version 6.0
+
 # 项目设置
 
 ## les00
@@ -59,3 +61,6 @@ MFC控件编程，简易的绘图软件制作，绘图区域刷新需要优化
 
 ## les10
 MSComm串口编程，未完成
+
+## les11
+简易版MSComm串口编程
