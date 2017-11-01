@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+// #include "MyDLL.h"
 
 class Cles12View : public CView
 {

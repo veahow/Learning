@@ -27,6 +27,8 @@ IDE：Visual Studio 2010
 
 5.添加ActiveX控件：Microsoft Communications Control Version 6.0
 
+6.使用模拟数据采集卡需要引入三个文件：MyDLL.dll、MyDLL.h、MyDLL.lib
+
 # 项目设置
 
 ## les00
@@ -66,4 +68,4 @@ MSComm串口编程，未完成
 简易版MSComm串口编程
 
 ## les12
-简易版数据采集程序，未完成
+简易版数据采集程序（数据随机模拟版本）

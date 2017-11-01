@@ -195,7 +195,11 @@ void Cles12View::OnDaqStart()
 {
 	// TODO: 在此添加命令处理程序代码
 	m_nRun = 1;    // 采集状态
-	SetTimer(0, 500, NULL);
+	SetTimer(1, 500, NULL);
+
+	// MyDLL版
+	// OpenDevice();    // 打开设备 MyDLL
+	// SetChanSel(0x01);
 	//::AfxMessageBox(_T("进入采集状态"));
 }
 
@@ -214,7 +218,10 @@ void Cles12View::OnDaqStop()
 	// TODO: 在此添加命令处理程序代码
 	m_nRun = 0;    // 空闲状态
 	KillTimer(1);
-	//::AfxMessageBox(_T("进入空闲状态"));
+
+	// MyDLL版
+	// CloseDevice();    // 关闭设备 MyDLL
+	// ::AfxMessageBox(_T("进入空闲状态"));
 }
 
 
@@ -243,6 +250,38 @@ void Cles12View::OnUpdateDaqLine(CCmdUI *pCmdUI)
 void Cles12View::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	// m_nPointNum 记录当前采集到的数据的个数
+	// m_Point[100] 保存采集到的数据
+
+	// 使用模拟数据采集卡 MyDLL 进行数据采集
+	/*
+	double m_Data[1000];
+	double m_DataVal = 0.000;
+
+	ReadData(1000, 0x01, m_Data);
+	for(int i = 0; i < 1000; ++i) m_DataVal += m_Data[i];
+	m_DataVal /= 1000.00;
+	*/
+
+	if(m_nPointNum < 100)    // 判断数据个数有没有超过100
+	{
+		// rand() 随机产生int类型的整数，由于范围为50-550中，需要取余计算
+		m_Point[m_nPointNum].y = 50+rand()%500;
+
+		// MyDLL版本
+		// m_Point[m_nPointNum].y = m_DataVal*100;
+		m_nPointNum++;
+	}else{
+		// 滚动显示，即将最早的数据剔除，往前移动直至最后位置空出来
+		for(int k = 0; k < 99; ++k) m_Point[k].y = m_Point[k+1].y;    // 空出99这个位置的数据
+		m_Point[99].y = 50+rand()%500;
+
+		// MyDLL版本
+		// m_Point[99].y = m_DataVal*100;
+	}
+
+	InvalidateRect(NULL);    // 发送WM_PAINT消息，即刷新消息
 
 	CView::OnTimer(nIDEvent);
+
 }
