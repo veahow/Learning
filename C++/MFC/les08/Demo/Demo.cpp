@@ -14,8 +14,9 @@ BOOL CDemoApp::InitInstance()    // MFC入口函数
 	return TRUE;
 }
 
-CDemoWnd::CDemoWnd()    // 构造函数
+CDemoWnd::CDemoWnd()     // 构造函数
 {
+	// 初始化坐标点
 	m_nX0 = 0;
 	m_nY0 = 0;
 	m_nX1 = 0;
@@ -34,28 +35,10 @@ BEGIN_MESSAGE_MAP(CDemoWnd, CFrameWnd)
 	ON_MESSAGE(WM_PAINT, OnPaint)
 END_MESSAGE_MAP()
 
-LRESULT CDemoWnd::OnPaint(
-	WPARAM wParam, LPARAM lParam)
-{
-	CPaintDC dc(this);
-
-	for(int i = 0; i < m_nPicNum; ++i)
-	{
-		if(m_Pic[i].m_nPicType == 0) dc.Rectangle(
-			m_Pic[i].m_nX0, m_Pic[i].m_nY0,
-			m_Pic[i].m_nX1, m_Pic[i].m_nY1);
-
-		if(m_Pic[i].m_nPicType == 1) dc.Ellipse(
-			m_Pic[i].m_nX0, m_Pic[i].m_nY0,
-			m_Pic[i].m_nX1, m_Pic[i].m_nY1);
-	}
-
-	return 0;
-}
-
 LRESULT CDemoWnd::OnLButtonDown(
 	WPARAM wParam, LPARAM lParam)
 {
+	// lParam参数 低字节保存x坐标 高字节保存y坐标
 	m_nX0 = LOWORD(lParam);
 	m_nY0 = HIWORD(lParam);
 
@@ -67,7 +50,7 @@ LRESULT CDemoWnd::OnMouseMove(
 {
 	CClientDC dc(this);
 
-	// 擦除旧图
+	// 擦除旧图 由于背景是白色 因此使用白色画刷清除图像
 	dc.SelectStockObject(WHITE_PEN);    // 白色画刷
 
 	if((wParam & MK_CONTROL) &&
@@ -98,6 +81,7 @@ LRESULT CDemoWnd::OnMouseMove(
 LRESULT CDemoWnd::OnLButtonUp(
 	WPARAM wParam, LPARAM lParam)
 {
+	// 鼠标左键放开后 图像定格
 	CClientDC dc(this);
 
 	m_nX1 = LOWORD(lParam);
@@ -123,6 +107,26 @@ LRESULT CDemoWnd::OnLButtonUp(
 		m_Pic[m_nPicNum].m_nX1 = m_nX1;
 		m_Pic[m_nPicNum].m_nY1 = m_nY1;
 		m_nPicNum++;
+	}
+
+	return 0;
+}
+
+LRESULT CDemoWnd::OnPaint(
+	WPARAM wParam, LPARAM lParam)
+{
+	// 保持现场
+	CPaintDC dc(this);
+
+	for(int i = 0; i < m_nPicNum; ++i)
+	{
+		if(m_Pic[i].m_nPicType == 0) dc.Rectangle(
+			m_Pic[i].m_nX0, m_Pic[i].m_nY0,
+			m_Pic[i].m_nX1, m_Pic[i].m_nY1);
+
+		if(m_Pic[i].m_nPicType == 1) dc.Ellipse(
+			m_Pic[i].m_nX0, m_Pic[i].m_nY0,
+			m_Pic[i].m_nX1, m_Pic[i].m_nY1);
 	}
 
 	return 0;
