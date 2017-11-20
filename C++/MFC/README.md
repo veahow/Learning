@@ -1,16 +1,17 @@
 ﻿# Learning/C++/MFC
 MFC(Microsoft Foundation Classes, 微软基础类库)
 
-这是一门古老的技术，有许多历史遗留问题，微软几乎要放弃它了
+这是一门古老的技术，有许多历史遗留问题，微软几乎要放弃它了。
 
-为什么还学它呢？仅仅只是对其封装的API进行学习，进而构造Windows的编程模型，并不深入学习
+为什么还学它呢？仅仅只是对其封装的API（说是封装，其实很浅）进行学习，进而构造Windows的编程模型（理解Windows的消息映射等方法），并不深入学习这个框架的东西。
 
 # 基本配置
-计算机：32位计算机
+开发环境：32位计算机
 
 操作系统：Microsoft Windows 7
 
-IDE：Visual Studio 2010
+IDE：Visual Studio 2010（目前使用2010版本，后续将更新为2017版本）
+工具集：v100
 
 第三方软件：VPSD虚拟串口、Commix
 
@@ -22,7 +23,6 @@ IDE：Visual Studio 2010
 3.项目使用静态MFC库。
 
 4.链接器的清单文件的输出需要改为否，才可编译运行。
-
 （或删除VS文件夹中bin文件夹里头的cvtres.exe，原因可能是VS2010编译器与.NET FrameWork最新版本不兼容）
 
 5.添加ActiveX控件：Microsoft Communications Control Version 6.0
@@ -69,3 +69,9 @@ MSComm串口编程，未完成
 
 ## les12
 简易版数据采集程序（数据随机模拟版本）
+
+## Design1
+设计1
+
+## Design2
+设计2
